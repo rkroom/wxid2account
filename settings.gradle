@@ -1,19 +1,21 @@
 pluginManagement {
     repositories {
-       // google()
-       // mavenCentral()
+        // 使用阿里云镜像，可以加速 Gradle 插件的下载
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         gradlePluginPortal()
-        jcenter()
+        // jcenter() 已被弃用，可以安全移除
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
-        mavenCentral()
-        jcenter()
+        // 使用阿里云镜像加速项目依赖的下载
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+
+        // 【关键修改】添加 Xposed 官方仓库地址，用于下载 de.robv.android.xposed:api
+        maven { url 'https://api.xposed.info/' }
     }
 }
 
