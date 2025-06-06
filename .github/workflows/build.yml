@@ -49,8 +49,8 @@ jobs:
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          # 产物的名称
           name: app-release-unsigned
-          # 要上传的文件的路径
-          # Release APK 通常生成在这个路径下
-          path: app/build/outputs/apk/release/app-release.apk
+          # 【修改】使用通配符 (*) 来匹配该目录下的任何 .apk 文件
+          path: app/build/outputs/apk/release/*.apk
+          # 【新增】如果找不到任何文件，则将工作流标记为失败
+          if-no-files-found: error
